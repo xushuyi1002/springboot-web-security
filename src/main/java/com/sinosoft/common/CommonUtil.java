@@ -8,8 +8,8 @@ public class CommonUtil {
     /**
      * 判断一个对象是否为空
      *
-     * @param obj
-     * @return
+     * @param obj 对象
+     * @return Boolean
      */
     public static boolean isEmpty(Object obj) {
         if (("").equals(obj) || null == obj || "null".equals(obj) || obj.equals(null)) {
