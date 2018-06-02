@@ -1,0 +1,57 @@
+server:
+  port: 10110
+---
+spring:
+  application:
+    name: springSecurity
+---
+info:
+  name: springSecurity
+  description: /swagger-ui.html
+  version: 1.0
+---
+# https://www.cnblogs.com/arthy/p/6902960.html
+spring:
+  session:
+    store-type: none
+---
+logging:
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+---
+spring:
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        #调整hibernate字段命名策略，否则查询会将实体类驼峰字母转为下划线
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  datasource:
+    platform: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/sinosoft?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
+---
+spring:
+  output:
+    ansi:
+      enabled: detect #检查终端是否支持ANSI，是的话就采用彩色输出，增强日志的可读性
+  thymeleaf:
+    suffix: .html #网页后缀名
+    mode: HTML5 #网页类型
+    prefix: classpath:/templates/ #网页所在路径
+    encoding: UTF-8 #网页编码类型
+    servlet:
+      content-type: text/html #web容器类型
+    cache: false #禁止thymeleaf缓存（建议：开发环境设置为false，生成环境设置为true）
+---
+spring:
+  http:
+    encoding:
+      enabled: false
