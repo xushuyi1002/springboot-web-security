@@ -24,7 +24,6 @@ public class LoginController {
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public String login() {
         log.info("Login...");
-        log.info("Login...");
         // 获取安全认证后的用户信息
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (!CommonUtil.isEmpty(principal)) {
